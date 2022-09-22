@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app-cake:
+    container_name: app-cake
+    build: ./docker
+    ports:
+      - 8000:80
+    volumes:
+      - ./app:/var/www/app
+    working_dir: /var/www/app
+  db-cake:
+    container_name: db-cake
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
